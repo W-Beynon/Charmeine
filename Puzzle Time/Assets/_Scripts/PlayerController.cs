@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
 	{
-		mouseGetPos();	
+		//mouseGetPos();
+		mouseGetPosAdjacent();	
 	}
 	
 	if(transform.position == currDest && currDest != destination){
@@ -68,6 +69,39 @@ public class PlayerController : MonoBehaviour
 		destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
 	    }
    }
+
+    void mouseGetPosAdjacent()
+    {
+/*            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
+            Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+
+            if (hit2D.collider != null)
+            {
+                Debug.Log("We hit " + hit2D.collider.name + " at position " + hit2D.point);
+            }*/
+
+	    Vector3 mousePos = Input.mousePosition;
+	    //Debug.Log("Base pos at " + mousePos.x +", " + mousePos.y+", "+mousePos.z);
+	    mousePos = cam.ScreenToWorldPoint(mousePos);
+	    mousePos.z = 0;
+	   // Debug.Log("ScreenToWorld pos at " + mousePos.x +", " + mousePos.y+", "+mousePos.z);
+	    //Vector3Int gridPosition = Vector3Int.FloorToInt(mousePos);//((int)mousePos.x, (int)mousePos.y, 0);//map.WorldToCell(mousePos);
+	    //gridPosition.z = 0;
+	    Vector3Int gridPosition = map.WorldToCell(mousePos);
+	    gridPosition.x = gridPosition.x + 1;
+	    gridPosition.y = gridPosition.y + 1;
+	    gridPosition.z = 0;
+	    Vector3Int currPosition = map.WorldToCell(transform.position);
+	    //Debug.Log("Vector3Int pos at " + gridPosition.x +", " + gridPosition.y+", "+gridPosition.z);
+	    if(map.HasTile(gridPosition) && (gridPosition.x >= (currPosition.x - 1)) && (gridPosition.x <= (currPosition.x + 1))
+			     && (gridPosition.y >= (currPosition.y - 1)) && (gridPosition.y <= (currPosition.y + 1))){
+		//Debug.Log("We hit!");
+		currDest = transform.position;
+		destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
+	    }
+   }
+
 
     void getNextPos(){
 	//dist = getDistance();

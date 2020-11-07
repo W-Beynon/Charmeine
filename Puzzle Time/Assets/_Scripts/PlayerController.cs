@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     void getNextPos(){
 	//dist = getDistance();
 	int minDist = 1000;
+	int tempDist;
 	Vector3Int currTile = map.WorldToCell(transform.position);
 	Vector3Int tempTile;
 	Vector3Int newDest = currTile;
@@ -80,15 +81,21 @@ public class PlayerController : MonoBehaviour
 			tempTile = currTile;
 			tempTile.x = tempTile.x+i;
 			tempTile.y = tempTile.y+j;
-			if(map.HasTile(tempTile) && (Mathf.Abs(map.WorldToCell(destination).x - tempTile.x) 
-						+ Mathf.Abs(map.WorldToCell(destination).y - tempTile.y)) < minDist){
-				Debug.Log("Tested pos: x = " + tempTile.x + ", y = " + tempTile.y);
+			Debug.Log("Tested pos: x = " + tempTile.x + ", y = " + tempTile.y);
+			tempDist = (Mathf.Abs(map.WorldToCell(destination).x - tempTile.x) 
+						+ Mathf.Abs(map.WorldToCell(destination).y - tempTile.y));
+			if(map.HasTile(tempTile) && tempDist < minDist){
+				
+				Debug.Log("Distance: x = " + (Mathf.Abs(map.WorldToCell(destination).x - tempTile.x))
+						       	+ ", y = " + (Mathf.Abs(map.WorldToCell(destination).y - tempTile.y)) 
+								+", Total = " + tempDist);
+				minDist = tempDist;
 				newDest = tempTile;	
 			}
 		}
 	}
 	//if(newDest != null)
-	Debug.Log("Final pos: x = " + newDest.x + ", y = " + newDest.y);
+	Debug.Log("Final pos: x = " + newDest.x + ", y = " + newDest.y + ", Dest: x = " + map.WorldToCell(destination).x + ", y = " + map.WorldToCell(destination).y);
 		currDest = map.GetCellCenterWorld(newDest);
     }
 

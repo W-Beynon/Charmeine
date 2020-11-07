@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TimeKeeper : MonoBehaviour
 {
-	[SerializeField]
-    private int round;
+    public int round;
 
     // Start is called before the first frame update
     void Start()

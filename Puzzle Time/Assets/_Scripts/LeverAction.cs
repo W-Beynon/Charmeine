@@ -2,31 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorAction : Action
+public class LeverAction : Action
 {
-    private bool lifted;
+    public GameObject attachedObject;
+    private bool on;
 
     // Start is called before the first frame update
     void Start()
     {
-        lifted = false;
+        on = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (on)
+        {
+            attachedObject.GetComponent<Action>().performAction();
+        }
     }
 
     public override void performAction()
     {
-        if(lifted)
+        if (on)
         {
-            // drops door
+            on = false;
         }
         else
         {
-            // lifts door
+            on = true;
         }
     }
 }

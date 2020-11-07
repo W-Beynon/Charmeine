@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPress : MonoBehaviour
+public class ButtonPress : Action
 {
     public GameObject attachedObject;
-    public bool pressed;
+    private bool pressed;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +20,10 @@ public class ButtonPress : MonoBehaviour
         {
             attachedObject.GetComponent<Action>().performAction();
         }
+    }
+
+    public override void performAction()
+    {
+        pressed = true;
     }
 }

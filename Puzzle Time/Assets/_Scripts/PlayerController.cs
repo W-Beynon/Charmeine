@@ -6,27 +6,37 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
 	public Tilemap map;
+	public TimeKeeper timeKeep;
+	public LifeManager lifeManage;
 	Camera cam;
 //	MouseInput msInp;
 //
 	[SerializeField]
 	private float movementSpeed;
-	
+	private Vector3 startPos;
 	private Vector3 destination;
 	private Vector3 currDest;
 
     // Start is called before the first frame update
     void Start()
     {
+	startPos = transform.position;
 	destination = transform.position;
 	currDest = transform.position;
         cam = Camera.main;
+	lifeManage.addAction(transform.position);
 //	msInp = gameObject.AddComponent<MouseInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
+	if(Input.GetKey(KeyCode.R)){
+		transform.position = startPos;
+		timeKeep.resetRound();
+		lifeManage.addLife();
+	}
+	
         if (Input.GetMouseButtonDown(0)){
 		//mouseGetPos();
 		mouseGetPosAdjacent();	
@@ -34,6 +44,8 @@ public class PlayerController : MonoBehaviour
 	
 	if(transform.position == currDest && currDest != destination){
 		getNextPos();
+		timeKeep.incRound();
+		lifeManage.addAction(transform.position);
 	}
 
 	transform.position = Vector3.MoveTowards(transform.position, currDest, movementSpeed * Time.deltaTime);
@@ -78,6 +90,8 @@ public class PlayerController : MonoBehaviour
 		//Debug.Log("We hit!");
 		currDest = transform.position;
 		destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
+	    	timeKeep.incRound();
+	    	lifeManage.addAction(transform.position);
 	    }
    }
 

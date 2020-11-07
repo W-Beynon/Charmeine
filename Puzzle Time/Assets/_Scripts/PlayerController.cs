@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
 	private float movementSpeed;
 	
 	private Vector3 destination;
+	private Vector3 currDest;
 
     // Start is called before the first frame update
     void Start()
     {
 	destination = transform.position;
+	currDest = transform.position;
         cam = Camera.main;
 //	msInp = gameObject.AddComponent<MouseInput>();
     }
@@ -29,8 +31,12 @@ public class PlayerController : MonoBehaviour
 	{
 		mouseGetPos();	
 	}
+	
+	if(transform.position == currDest && currDest != destination){
+		getNextPos();
+	}
 
-	transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);
+	transform.position = Vector3.MoveTowards(transform.position, currDest, movementSpeed * Time.deltaTime);
     }
 
     void mouseGetPos()
@@ -45,21 +51,50 @@ public class PlayerController : MonoBehaviour
             }*/
 
 	    Vector3 mousePos = Input.mousePosition;
-	    Debug.Log("Base pos at " + mousePos.x +", " + mousePos.y+", "+mousePos.z);
+	    //Debug.Log("Base pos at " + mousePos.x +", " + mousePos.y+", "+mousePos.z);
 	    mousePos = cam.ScreenToWorldPoint(mousePos);
 	    mousePos.z = 0;
-	    Debug.Log("ScreenToWorld pos at " + mousePos.x +", " + mousePos.y+", "+mousePos.z);
+	   // Debug.Log("ScreenToWorld pos at " + mousePos.x +", " + mousePos.y+", "+mousePos.z);
 	    //Vector3Int gridPosition = Vector3Int.FloorToInt(mousePos);//((int)mousePos.x, (int)mousePos.y, 0);//map.WorldToCell(mousePos);
 	    //gridPosition.z = 0;
 	    Vector3Int gridPosition = map.WorldToCell(mousePos);
 	    gridPosition.x = gridPosition.x + 1;
 	    gridPosition.y = gridPosition.y + 1;
 	    gridPosition.z = 0;
-	    Debug.Log("Vector3Int pos at " + gridPosition.x +", " + gridPosition.y+", "+gridPosition.z);
+	    //Debug.Log("Vector3Int pos at " + gridPosition.x +", " + gridPosition.y+", "+gridPosition.z);
 	    if(map.HasTile(gridPosition)){
-		Debug.Log("We hit!");
+		//Debug.Log("We hit!");
+		currDest = transform.position;
 		destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
 	    }
    }
+
+    void getNextPos(){
+	//dist = getDistance();
+	int minDist = 1000;
+	Vector3Int currTile = map.WorldToCell(transform.position);
+	Vector3Int tempTile;
+	Vector3Int newDest = currTile;
+	for(int i = -1; i <= 1; i++){
+		for(int j = -1; j <= 1; j++){
+			tempTile = currTile;
+			tempTile.x = tempTile.x+i;
+			tempTile.y = tempTile.y+j;
+			if(map.HasTile(tempTile) && (Mathf.Abs(map.WorldToCell(destination).x - tempTile.x) 
+						+ Mathf.Abs(map.WorldToCell(destination).y - tempTile.y)) < minDist){
+				Debug.Log("Tested pos: x = " + tempTile.x + ", y = " + tempTile.y);
+				newDest = tempTile;	
+			}
+		}
+	}
+	//if(newDest != null)
+	Debug.Log("Final pos: x = " + newDest.x + ", y = " + newDest.y);
+		currDest = map.GetCellCenterWorld(newDest);
+    }
+
+   /* int getDistance(){
+	return Math.Abs(map.WorldToCell(destination).x - map.WorldToCell(transform.position).x) 
+		+ Math.Abs(map.WorldToCell(destination).y - map.WorldToCell(transform.position).y);
+    }*/
 
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8212396593683899204}
   - component: {fileID: 8212396593683899259}
   - component: {fileID: 8212396593683899207}
+  - component: {fileID: 3289563687082583321}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -102,10 +103,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8212396593683899258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0134c598168a44e61bdbbb9ac047c259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 0}
   movementSpeed: 2
+--- !u!114 &3289563687082583321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212396593683899258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624742f789f419e40a1f3b62bae71fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  movementSpeed: 0
+  wall: {fileID: 0}

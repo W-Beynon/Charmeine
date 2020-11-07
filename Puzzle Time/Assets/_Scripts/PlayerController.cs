@@ -20,21 +20,26 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	startPos = transform.position;
-	destination = transform.position;
-	currDest = transform.position;
         cam = Camera.main;
-	lifeManage.addAction(transform.position);
-//	msInp = gameObject.AddComponent<MouseInput>();
+	startPos = transform.position;
+	startUp();
+    }
+
+    void startUp(){
+	transform.position = startPos;
+	destination = startPos;
+	currDest = startPos;
+	lifeManage.addAction(startPos);
+
     }
 
     // Update is called once per frame
     void Update()
     {
 	if(Input.GetKey(KeyCode.R)){
-		transform.position = startPos;
 		timeKeep.resetRound();
 		lifeManage.addLife();
+		startUp();
 	}
 	
         if (Input.GetMouseButtonDown(0)){

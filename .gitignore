@@ -1,0 +1,8 @@
+  
+*.class
+Puzzle-Time/Library/
+Puzzle-Time/Temp/
+*.sln
+Puzzle-Time/.vs/
+Puzzle-Time/obj/
+*.csproj

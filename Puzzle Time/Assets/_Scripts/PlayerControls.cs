@@ -6,11 +6,13 @@ using UnityEngine.Tilemaps;
 public class PlayerControls : MonoBehaviour
 {
     public Tilemap map;
+    public LifeManager lifeManage;
     Camera cam;
     //	MouseInput msInp;
     //
     [SerializeField]
     private float movementSpeed;
+    private Vector3 startPos;
 
     private Vector3 destination;
     private Vector3 currDest;
@@ -25,11 +27,20 @@ public class PlayerControls : MonoBehaviour
         cam = Camera.main;
         wall = (Tilemap)GameObject.Find("Wall").GetComponent(typeof(Tilemap));
         timeKeep = (TimeKeeper)GameObject.FindObjectOfType(typeof(TimeKeeper));
+        startPos = transform.position;
+        startUp();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.R))
+        {
+            timeKeep.resetRound();
+            lifeManage.addLife();
+            startUp();
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             mouseGetPosAdjacent();
@@ -50,11 +61,13 @@ public class PlayerControls : MonoBehaviour
 
     }
 
-   bool checkCollision()
+    void startUp()
     {
+        transform.position = startPos;
+        destination = startPos;
+        currDest = startPos;
+        lifeManage.addAction(startPos);
 
-
-        return false;
     }
 
     void mouseGetPosAdjacent()

@@ -15,6 +15,7 @@ public class PlayerControls : MonoBehaviour
     private Vector3 destination;
     private Vector3 currDest;
     public Tilemap wall;
+    public TimeKeeper timeKeep;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class PlayerControls : MonoBehaviour
         currDest = transform.position;
         cam = Camera.main;
         wall = (Tilemap)GameObject.Find("Wall").GetComponent(typeof(Tilemap));
+        timeKeep = (TimeKeeper)GameObject.FindObjectOfType(typeof(TimeKeeper));
     }
 
     // Update is called once per frame
@@ -96,6 +98,7 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log(wall.GetTile(gridPosition));
             currDest = transform.position;
             destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
+            timeKeep.incRound();
         }
     }
 

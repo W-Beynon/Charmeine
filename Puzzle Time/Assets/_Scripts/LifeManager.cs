@@ -27,8 +27,7 @@ public class LifeManager : MonoBehaviour
 	}
 	
     }
-
-    // Update is called once per frame
+    
     public void addAction(Vector3 pos){
 	for(int i = 0; i < currRunning; i++){
 		pastLife[i].movement();

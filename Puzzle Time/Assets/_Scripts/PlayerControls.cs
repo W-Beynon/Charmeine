@@ -38,6 +38,16 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timeKeep.getRound() >= maxMoves)
+        {
+            pastMoves[maxMoves-1].x = -1000;
+            pastMoves[maxMoves-1].y = -1000;
+            pastMoves[maxMoves-1].z = -1000;
+            timeKeep.resetRound();
+            setMoves();
+            lifeManage.addLife();
+            startUp();
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             pastMoves[timeKeep.getRound()].x = -1000;

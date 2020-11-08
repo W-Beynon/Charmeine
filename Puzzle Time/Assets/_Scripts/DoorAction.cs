@@ -17,8 +17,8 @@ public class DoorAction : Action
         lifted = false;
         wall = (Tilemap)GameObject.Find("Wall").GetComponent(typeof(Tilemap));
         doors = (Tilemap)GameObject.Find("Doors").GetComponent(typeof(Tilemap));
-        doorPos.x = (int)transform.position.x + 1;
-        doorPos.y = (int)transform.position.y + 1;
+        doorPos.x = (int)transform.position.x;
+        doorPos.y = (int)transform.position.y;
         doorPos.z = 0;
         door = wall.GetTile(doorPos);
     }
@@ -34,13 +34,15 @@ public class DoorAction : Action
         {
             // drops door
             lifted = false;
-            doors.SetTile(doorPos, door);
-            wall.SetTile(doorPos, null);
         }
         else
         {
+            Debug.Log("HI BITCH");
             // lifts door
             lifted = true;
+            //doors.SetTile(doorPos, door);
+            Debug.Log(door);
+            wall.SetTile(doorPos, null);
         }
     }
 }

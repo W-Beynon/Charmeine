@@ -7,7 +7,8 @@ public class LifeManager : MonoBehaviour
 	public int amtLives = 5;
 	public PastLives[] pastLife;
 
-	public int currRunning;
+    [SerializeField]
+	private int currRunning;
 	private TimeKeeper timeKeep;
 	
     // Start is called before the first frame update
@@ -25,13 +26,19 @@ public class LifeManager : MonoBehaviour
         }
     }
 
+    public void setMoves(Vector3[] s)
+    {
+        if(currRunning < amtLives)
+            pastLife[currRunning].setMoves(s);
+    }
+
     public void addLife(){
 	    if(currRunning < amtLives){
 		    pastLife[currRunning].startIt();
 		    for(int i = 0; i < currRunning; i++){
 			    pastLife[i].movement();
 		    }
-		    currRunning += 1;
+            currRunning++;
 	    }
 	
     }
@@ -40,7 +47,7 @@ public class LifeManager : MonoBehaviour
 	    for(int i = 0; i < currRunning; i++){
 		    pastLife[i].movement();
 	    }
-	    if(currRunning < amtLives)
-		    pastLife[currRunning].addRound(pos);
+	    /*if(currRunning < amtLives)
+		    pastLife[currRunning].addRound(pos);*/
     }
 }

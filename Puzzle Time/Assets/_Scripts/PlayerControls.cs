@@ -26,7 +26,6 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pastMoves = new Vector3[maxMoves];
         destination = transform.position;
         currDest = transform.position;
         cam = Camera.main;
@@ -39,9 +38,10 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             timeKeep.resetRound();
+            setMoves();
             lifeManage.addLife();
             startUp();
         }
@@ -68,6 +68,8 @@ public class PlayerControls : MonoBehaviour
 
     void startUp()
     {
+        Debug.Log(startPos);
+        pastMoves = new Vector3[maxMoves];
         transform.position = startPos;
         destination = startPos;
         currDest = startPos;
@@ -115,12 +117,17 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log(wall.GetTile(gridPosition));
             currDest = transform.position;
             destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
-            //lifeManage.addAction(currDest);
+            lifeManage.addAction(currDest);
+            pastMoves[timeKeep.getRound()] = currDest;
 
             timeKeep.incRound();
         }
     }
 
+    private void setMoves()
+    {
+        lifeManage.setMoves(pastMoves);
+    }
 
     void getNextPos()
     {

@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class TimeKeeper : MonoBehaviour
 {
-<<<<<<< HEAD
-	[SerializeField]
-    private int round;
-=======
     public int round;
->>>>>>> Kris-branch
 
     // Start is called before the first frame update
     void Start()

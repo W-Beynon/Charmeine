@@ -34,13 +34,15 @@ public class DoorAction : Action
         {
             // drops door
             lifted = false;
-            doors.SetTile(doorPos, door);
-            wall.SetTile(doorPos, null);
         }
         else
         {
+            Debug.Log("HI BITCH");
             // lifts door
             lifted = true;
+            //doors.SetTile(doorPos, door);
+            //wall.SetTile(doorPos, null);
+            Destroy(door);
         }
     }
 }

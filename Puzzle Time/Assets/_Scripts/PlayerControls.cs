@@ -50,7 +50,7 @@ public class PlayerControls : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-	    FindObjectOfType<RippleEffect>().Emit(Camera.main.transform.position);//Camera.main.WorldToViewportPoint(transform.position));
+	    FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
             pastMoves[timeKeep.getRound()].x = -1000;
             pastMoves[timeKeep.getRound()].y = -1000;
             pastMoves[timeKeep.getRound()].z = -1000;

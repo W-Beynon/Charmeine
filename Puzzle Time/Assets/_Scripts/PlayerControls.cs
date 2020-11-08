@@ -40,6 +40,9 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            pastMoves[timeKeep.getRound()].x = -1000;
+            pastMoves[timeKeep.getRound()].y = -1000;
+            pastMoves[timeKeep.getRound()].z = -1000;
             timeKeep.resetRound();
             setMoves();
             lifeManage.addLife();
@@ -68,7 +71,6 @@ public class PlayerControls : MonoBehaviour
 
     void startUp()
     {
-        Debug.Log(startPos);
         pastMoves = new Vector3[maxMoves];
         transform.position = startPos;
         destination = startPos;

@@ -44,6 +44,9 @@ public class PastLives : MonoBehaviour
 
     public void movement()
     {
+        if(pastMoves[getTime.getRound()].x == -1000 && pastMoves[getTime.getRound()].y == -1000
+            && pastMoves[getTime.getRound()].z == -1000)
+            ((MeshRenderer)GetComponent(typeof(MeshRenderer))).enabled = false;
         transform.position = pastMoves[getTime.getRound()];
         // transform.position = Vector3.MoveTowards(transform.position, pastMoves[getTime.getRound()], movementSpeed * Time.deltaTime);
     }

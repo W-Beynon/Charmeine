@@ -35,11 +35,21 @@ public class LifeManager : MonoBehaviour
     public void addLife(){
 	    if(currRunning < amtLives){
 		    pastLife[currRunning].startIt();
-		    for(int i = 0; i < currRunning; i++){
-			    pastLife[i].movement();
-		    }
+		    for(int i = 0; i < currRunning; i++)
+            {
+                pastLife[i].startIt();
+                pastLife[i].movement();
+            }
             currRunning++;
 	    }
+        else
+        {
+            for (int i = 0; i < amtLives; i++)
+            {
+                pastLife[i].startIt();
+                pastLife[i].movement();
+            }
+        }
 	
     }
     

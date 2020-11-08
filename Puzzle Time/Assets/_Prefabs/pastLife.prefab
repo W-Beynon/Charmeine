@@ -93,7 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amtMoves: 75
   getTime: {fileID: 0}
-  movementSpeed: 0
+  movementSpeed: 2
+  pastMoves: []
 --- !u!70 &1924820345935251086
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

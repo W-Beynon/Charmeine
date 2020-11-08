@@ -21,13 +21,13 @@ public class PressurePlateAction : Action
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("FUCK YOU");
+        //Debug.Log("FUCK YOU");
         performAction();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Why tho");
+        //Debug.Log("Why tho");
         performAction();
     }
 

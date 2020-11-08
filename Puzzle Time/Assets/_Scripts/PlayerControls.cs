@@ -66,7 +66,7 @@ public class PlayerControls : MonoBehaviour
         transform.position = startPos;
         destination = startPos;
         currDest = startPos;
-        lifeManage.addAction(startPos);
+        lifeManage.setStartPos(startPos);
 
     }
 
@@ -111,6 +111,7 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log(wall.GetTile(gridPosition));
             currDest = transform.position;
             destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
+            lifeManage.addAction(currDest);
             timeKeep.incRound();
         }
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4452438957195355240}
   - component: {fileID: 1848237802815045345}
   - component: {fileID: 3311848317687210893}
+  - component: {fileID: 7597170090027764675}
   m_Layer: 0
   m_Name: PastLife 1
   m_TagString: Untagged
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 349155115
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 41c8fc54ee1d1420ba41d619f85e6a07, type: 3}
   m_Color: {r: 0.2971698, g: 1, b: 1, a: 1}
@@ -191,3 +192,19 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+--- !u!58 &7597170090027764675
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971424703654916042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.032932192, y: 0.043512642}
+  serializedVersion: 2
+  m_Radius: 0.12751004

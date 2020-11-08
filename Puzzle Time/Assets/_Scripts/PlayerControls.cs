@@ -107,8 +107,8 @@ public class PlayerControls : MonoBehaviour
         //Vector3Int gridPosition = Vector3Int.FloorToInt(mousePos);//((int)mousePos.x, (int)mousePos.y, 0);//map.WorldToCell(mousePos);
         //gridPosition.z = 0;
         Vector3Int gridPosition = map.WorldToCell(mousePos);
-        gridPosition.x = gridPosition.x + 1;
-        gridPosition.y = gridPosition.y + 1;
+        gridPosition.x = gridPosition.x;
+        gridPosition.y = gridPosition.y;
         gridPosition.z = 0;
         Vector3Int currPosition = map.WorldToCell(transform.position);
         //Debug.Log("Vector3Int pos at " + gridPosition.x +", " + gridPosition.y+", "+gridPosition.z);

@@ -18,8 +18,8 @@ public class DoorAction : Action
         wall = (Tilemap)GameObject.Find("Wall").GetComponent(typeof(Tilemap));
         doors = (Tilemap)GameObject.Find("Doors").GetComponent(typeof(Tilemap));
         doorPos = wall.WorldToCell(transform.position);
-        doorPos.x = doorPos.x+1;
-        doorPos.y = doorPos.y+1;
+        doorPos.x = doorPos.x;
+        doorPos.y = doorPos.y;
         doorPos.z = 0;
         door = wall.GetTile(doorPos);
     }
@@ -41,6 +41,7 @@ public class DoorAction : Action
         else
         {
             // lifts door
+            Debug.Log(door);
             lifted = true;
             doors.SetTile(doorPos, door);
             wall.SetTile(doorPos, null);

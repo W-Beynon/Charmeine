@@ -41,12 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
-=======
-  - name: Player
-    uniqueID: 349155115
+  - name: ground
+    uniqueID: 446293749
     locked: 0
-  - name: Player
-    uniqueID: 1720229423
+  - name: walls
+    uniqueID: 2915367921
     locked: 0
->>>>>>> Kris-branch
+  - name: doors
+    uniqueID: 3316332301
+    locked: 0

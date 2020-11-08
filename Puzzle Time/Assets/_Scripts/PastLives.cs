@@ -20,11 +20,11 @@ public class PastLives : MonoBehaviour
         transform.position = startPos;
         pastMoves = new Vector3[amtMoves];
 	    currRound = 0;
-        ((MeshRenderer)GetComponent(typeof(MeshRenderer))).enabled = false;
+        ((SpriteRenderer)GetComponent(typeof(SpriteRenderer))).enabled = false;
     }
 
     public void startIt(){
-        ((MeshRenderer)GetComponent(typeof(MeshRenderer))).enabled = true;
+        ((SpriteRenderer)GetComponent(typeof(SpriteRenderer))).enabled = true;
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class PastLives : MonoBehaviour
     {
         if(pastMoves[getTime.getRound()].x == -1000 && pastMoves[getTime.getRound()].y == -1000
             && pastMoves[getTime.getRound()].z == -1000)
-            ((MeshRenderer)GetComponent(typeof(MeshRenderer))).enabled = false;
+            ((SpriteRenderer)GetComponent(typeof(SpriteRenderer))).enabled = false;
         transform.position = pastMoves[getTime.getRound()];
         // transform.position = Vector3.MoveTowards(transform.position, pastMoves[getTime.getRound()], movementSpeed * Time.deltaTime);
     }

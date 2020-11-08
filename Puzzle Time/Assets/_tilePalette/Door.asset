@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d844f708bf148c5804962c41890f11, type: 3}
   m_Name: Door
   m_EditorClassIdentifier: 
-  m_AnimatedSprites: []
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: b4fb5628da6cd45d2bf0159946b06acb, type: 3}
+  - {fileID: 21300002, guid: b4fb5628da6cd45d2bf0159946b06acb, type: 3}
+  - {fileID: 21300004, guid: b4fb5628da6cd45d2bf0159946b06acb, type: 3}
+  m_MinSpeed: 2
+  m_MaxSpeed: 2
   m_AnimationStartTime: 0
   m_TileColliderType: 0

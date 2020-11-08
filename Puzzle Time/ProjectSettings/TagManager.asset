@@ -38,9 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Walls
+    uniqueID: 1172400319
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Walls
-    uniqueID: 1172400319
+  - name: Player
+    uniqueID: 349155115
     locked: 0

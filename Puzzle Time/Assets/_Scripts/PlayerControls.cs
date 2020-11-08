@@ -14,6 +14,10 @@ public class PlayerControls : MonoBehaviour
     private float movementSpeed;
     private Vector3 startPos;
 
+    [SerializeField]
+    private int maxMoves = 75;
+    private Vector3[] pastMoves;
+
     private Vector3 destination;
     private Vector3 currDest;
     public Tilemap wall;
@@ -22,6 +26,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pastMoves = new Vector3[maxMoves];
         destination = transform.position;
         currDest = transform.position;
         cam = Camera.main;
@@ -67,7 +72,6 @@ public class PlayerControls : MonoBehaviour
         destination = startPos;
         currDest = startPos;
         lifeManage.setStartPos(startPos);
-
     }
 
     void mouseGetPosAdjacent()
@@ -111,7 +115,8 @@ public class PlayerControls : MonoBehaviour
             //Debug.Log(wall.GetTile(gridPosition));
             currDest = transform.position;
             destination = map.GetCellCenterWorld(gridPosition);//map.GetTile(gridPosition);//.position;
-            lifeManage.addAction(currDest);
+            //lifeManage.addAction(currDest);
+
             timeKeep.incRound();
         }
     }

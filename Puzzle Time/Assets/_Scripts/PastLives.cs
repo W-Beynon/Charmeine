@@ -45,7 +45,7 @@ public class PastLives : MonoBehaviour
     public void movement()
     {
         transform.position = pastMoves[getTime.getRound()];
-        //transform.position = Vector3.MoveTowards(transform.position, pastMoves[getTime.getRound()], movementSpeed * Time.deltaTime);
+        // transform.position = Vector3.MoveTowards(transform.position, pastMoves[getTime.getRound()], movementSpeed * Time.deltaTime);
     }
 
     public void setMoves(Vector3[] moves)

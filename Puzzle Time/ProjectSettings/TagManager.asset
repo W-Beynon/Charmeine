@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
+=======
+  - name: Player
+    uniqueID: 349155115
+    locked: 0
+  - name: Player
+    uniqueID: 1720229423
+    locked: 0
+>>>>>>> Kris-branch

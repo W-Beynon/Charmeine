@@ -47,3 +47,6 @@ TagManager:
   - name: Wall
     uniqueID: 2652741361
     locked: 0
+  - name: GOAL
+    uniqueID: 1145854527
+    locked: 0

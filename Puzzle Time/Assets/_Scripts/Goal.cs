@@ -21,6 +21,6 @@ public class Goal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ((SpriteRenderer)gameObject.GetComponent(typeof(SpriteRenderer))).sprite = null;
-        SceneManager.LoadScene("Level Select");
+        //SceneManager.LoadScene("Level Select");
     }
 }
